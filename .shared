@@ -24,14 +24,6 @@ branch(){
     fi                                                                                                                                                                
 }
 
-#log stuff
-mnisjk(){         
-    tail -n 5001 /var/log/syslog | grep -B5 -A5 --color=always "\[smartscan\]\|\[mnisjk\]\|PHP Fatal error\|PHP Parse error\|PHP Warning\|Error processing\|assert\|alrt\|warn\|eror"
-    echo ---------------------
-    tail -n 50 -f /var/log/syslog | grep -i -B5 -A5 --color=always "\[smartscan\]\|\[mnisjk\]\|PHP Fatal error\|PHP Parse error\|PHP Warning\|Error processing\|assert\|alrt\|warn\|eror"
-}
-
-
 push(){
     curBranch=`git branch | grep ^\* | sed 's/* //g'`
     if [ "$curBranch" == "master" ]; then
@@ -55,6 +47,15 @@ push(){
             echo "Commit your changes before you push"
         fi
     fi
+}
+
+
+#log stuff
+
+mnisjk(){         
+    tail -n 5001 /var/log/syslog | grep -B5 -A5 --color=always "\[smartscan\]\|\[mnisjk\]\|PHP Fatal error\|PHP Parse error\|PHP Warning\|Error processing\|assert\|alrt\|warn\|eror"
+    echo ---------------------
+    tail -n 50 -f /var/log/syslog | grep -i -B5 -A5 --color=always "\[smartscan\]\|\[mnisjk\]\|PHP Fatal error\|PHP Parse error\|PHP Warning\|Error processing\|assert\|alrt\|warn\|eror"
 }
 
 # wrap_alias takes three arguments:
