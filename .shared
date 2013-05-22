@@ -12,8 +12,9 @@ git config color.ui true
 alias pull='git pull origin master'
 alias co='git checkout'
 alias st='git status'
+alias di='git diff'
 alias commit='git commit -a -m'
-
+alias pushm='git push origin master'
 branch(){
     if [ $# = 1 ]; then
         git pull origin master
