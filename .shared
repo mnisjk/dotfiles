@@ -1,8 +1,21 @@
 # start shared
 
+uname -a | fgrep 'Darwin' >/dev/null
+RESULT=$?
+if [ $RESULT -eq 0 ]; then
+    . ~/bin/.colors-mac
+    alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+    #echo "Mac"
+else
+    . ~/bin/.colors
+    #echo "Linux"
+fi
+
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls -CF'
+PS1="${Blue}(\A)${Color_Off} \u@\h ${Cyan}\W ${Purple}`__git_ps1` ${Color_Off}\$ "
+. ~/bin/z.sh
 
 # git related stuff
 
